@@ -1,0 +1,7 @@
+version: '3'
+vars:
+  DOCKER_IMAGE: https://ghcr.io/codeteam2-dev/echo:latest
+tasks:
+  build:
+    cmds:
+    - docker build -t {{ .DOCKER_IMAGE }} .
