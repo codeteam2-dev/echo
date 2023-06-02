@@ -2,8 +2,9 @@ FROM golang:1.16.3-alpine3.13 AS builder
 WORKDIR /go/src/github.com/codeteam2-dev/echo
 COPY . .
 RUN go mod download
-RUN go build -o /go/bin/echo
+RUN go build -o /go/bin/echo -tags netgo -installsuffix netgo -ldflags="-w -s"
 
 FROM scratch
-COPY --from=builder /go/bin/echo /go/bin/echo
-ENTRYPOINT ["/go/bin/echo"]
+LABEL maintainer="codeteam2-dev"
+COPY --from=builder /go/bin/echo /echo
+ENTRYPOINT ["/echo"]

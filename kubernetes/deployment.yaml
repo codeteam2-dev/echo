@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: echo
-        image: gcr.io/codeteam2-dev/echo:latest
+        image: ghcr.io/codeteam2-dev/echo:latest
         resources:
           requests:
             memory: "32Mi"
